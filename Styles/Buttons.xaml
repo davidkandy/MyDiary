@@ -5,13 +5,12 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Colors.xaml"/>
         <ResourceDictionary Source="Fonts.xaml"/>
-        
     </ResourceDictionary.MergedDictionaries>
 
     <!--Regular Button-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
-        <Setter Property="Background" Value="{StaticResource LightDarkGreenBrush}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}"/>
         <Setter Property="Margin" Value="0 10"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
@@ -19,8 +18,8 @@
     
     <!--Icon Buttons-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="IconButton">
-        <Setter Property="Background" Value="Black"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
@@ -30,8 +29,8 @@
     
     <!--Window Control Buttons-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="WindowsControlButton">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Height" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>

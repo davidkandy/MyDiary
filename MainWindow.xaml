@@ -8,7 +8,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Title="My Diary" Height="400" Width="500">
+        Title="My Diary" MaxHeight="800" MaxWidth="1000" MinHeight="350" MinWidth="500">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -17,37 +17,47 @@
         </Grid.RowDefinitions>
         
         <!-- Title Bar -->
-        <Grid Grid.Row="0">
+        <StackPanel Orientation="Horizontal">
+            <Grid Grid.Column="0" Panel.ZIndex="1">
 
-            <Grid.ColumnDefinitions>
-                <!-- Icon -->
-                <ColumnDefinition Width="Auto" />
-                <!-- Title -->
-                <ColumnDefinition Width="*" />
-                <!-- Windows Button -->
-                <ColumnDefinition Width="Auto" />
+                <Grid.ColumnDefinitions>
+                    <!-- Icon -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Title -->
+                    <ColumnDefinition Width="*" />
+                    <!-- Windows Button -->
+                    <ColumnDefinition Width="Auto" />
 
-            </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
 
-            <Grid>
-                <!-- Icon -->
-                <Button Grid.Column="0" Style="{StaticResource WindowsControlButton}">
-                    <Image Source="Images/Logo/diary.png"/>
-                </Button>
+                    <!-- Icon -->
+                    <Button Grid.Column="0" Style="{StaticResource WindowsControlButton}">
+                        <Image Source="Images/Logo/diary.png"/>
+                    </Button>
 
-                <!-- Title -->
-                <TextBlock Grid.Column="1" Grid.ColumnSpan="2">
-                        My Diary
-                </TextBlock>
+                <!--Title-->
+                <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource BaseTextBlockStyle}" FontFamily="{StaticResource LatoBold}" FontSize="{StaticResource FontSizeLarge}" Margin="0,0,0,-5">
+                                                    <Run Text="D" Foreground="{StaticResource DarkGreyBrush}" />
+                                                    <Run Text="I" Foreground="{StaticResource LightDarkGreenBrush}" />
+                                                    <Run Text="A" Foreground="{StaticResource DarkGreyBrush}" />
+                                                    <Run Text="R" Foreground="{StaticResource LightDarkGreenBrush}" />
+                                                    <Run Text="Y" Foreground="{StaticResource DarkGreyBrush}" />
+                        </TextBlock>
+                        <TextBlock Text="by kandi" Foreground="{StaticResource DarkGreyBrush}" TextAlignment="Center" />
+                    </StackPanel>
+                </Viewbox>
 
                 <!-- Window Buttons -->
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeMinimize}" />
-                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeResize}" />
-                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeCancel}" />
-            </StackPanel>
-        </Grid>
-     </Grid>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeMinimize}" />
+                    <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeResize}" />
+                    <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeCancel}" />
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
 
         <Grid Grid.Row="1">
             
@@ -100,10 +110,14 @@
                         Style="{StaticResource BaseStyle}"
                         Margin="5 35 30 10"/>
 
-
         
-                    <local1:DiaryItemContentControl
+                    <local1:DiaryItemContentControl 
+                        Grid.Row="1"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Margin="5"
                         />
+
 
             </Grid>
             

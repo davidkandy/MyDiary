@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d" 
              d:DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
-             d:DesignHeight="400" d:DesignWidth="350"
+             d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="250"
              >
     <Grid>
         <Border Background="{StaticResource LightDarkGreenBrush}" CornerRadius="30">
@@ -21,7 +21,7 @@
                     <TextBlock
                         Text="{Binding Content}"
                         FontFamily="{StaticResource FontAwesome}"
-                        FontSize="{StaticResource FontSizeVeryLarge}"
+                        FontSize="{StaticResource FontSizeRegular}"
                         TextWrapping="WrapWithOverflow"
                         Padding="20"
                         Foreground="{StaticResource DarkGreyBrush}"
