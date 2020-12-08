@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MyDiary"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--Font Families-->
+    <FontFamily x:Key="LatoRegular">pack://Application;,,,/Fonts/#Lato Regular</FontFamily>
+    <FontFamily x:Key="LatoThin">pack://Application;,,,/Fonts/#Lato Thin</FontFamily>
+    <FontFamily x:Key="LatoLight">pack://Application;,,,/Fonts/#Lato Light</FontFamily>
+    <FontFamily x:Key="LatoBold">pack://Application;,,,/Fonts/#Lato Bold</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://Application;,,,/Fonts/#FontAwesome</FontFamily>
+
+
+    <!--Style for Controls-->
+    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+    </Style>
+
+
+    <!--Style for TextBlock-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+    </Style>
+    
+    
+    <!--Implementation-->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource BaseStyle}"/>
+    <!--<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyleTextBlock}"/>-->
+    
+    
+    <!--Font Sizes-->
+    <system:Double x:Key="FontSizeVerySmall">8</system:Double>
+    <system:Double x:Key="FontSizeSmall">10</system:Double>
+    <system:Double x:Key="FontSizeRegular">14</system:Double>
+    <system:Double x:Key="FontSizeLarge">20</system:Double>
+    <system:Double x:Key="FontSizeVeryLarge">25</system:Double>
+    
+    <!--Font Icons-->
+    <system:String x:Key="FontAwesomeCross">&#xf055;</system:String>
+    <system:String x:Key="FontAwesomeStar">&#xf005;</system:String>
+    <system:String x:Key="FontAwesomePen">&#xf5ac;</system:String>
+    <system:String x:Key="FontAwesomeCancel">&#xf00d;</system:String>
+    <system:String x:Key="FontAwesomeMinimize">&#xf00d;</system:String>
+    <system:String x:Key="FontAwesomeMaximize">&#xf065;</system:String>
+    <system:String x:Key="FontAwesomeResize">&#xf066;</system:String>
+    
+
+</ResourceDictionary>

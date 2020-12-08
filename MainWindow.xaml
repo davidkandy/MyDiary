@@ -3,10 +3,110 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MyDiary"
+        xmlns:local="clr-namespace:MyDiary" xmlns:local1="clr-namespace:MyDiary.Pages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="My Diary" Height="400" Width="500">
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <!-- Title Bar -->
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <!-- Icon -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Title -->
+                <ColumnDefinition Width="*" />
+                <!-- Windows Button -->
+                <ColumnDefinition Width="Auto" />
+
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <!-- Icon -->
+                <Button Grid.Column="0" Style="{StaticResource WindowsControlButton}">
+                    <Image Source="Images/Logo/diary.png"/>
+                </Button>
+
+                <!-- Title -->
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="2">
+                        My Diary
+                </TextBlock>
+
+                <!-- Window Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeMinimize}" />
+                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeResize}" />
+                <Button Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeCancel}" />
+            </StackPanel>
+        </Grid>
+     </Grid>
+
+        <Grid Grid.Row="1">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left Column-->
+            <Grid Grid.Column="0" Background="White" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Mask for rounded corners-->
+                <Border CornerRadius="30"
+                        Name="Mask"
+                        Background="White"
+                        />
+
+                <Label Margin="15 0 15 10" Style="{StaticResource BaseStyle}"  Content="My Diary"/>
+                
+                <!-- Corner radius -->
+                <Grid>
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Mask}" />
+                    </Grid.OpacityMask>
+                
+                <Button
+                    Cursor="Hand"
+                    Style="{StaticResource IconButton}"
+                    Content="{StaticResource FontAwesomeCross}"/>
+                
+                </Grid>
+
+            </Grid>
+        
+            <!--Right Column-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Notes Label-->
+                    <Label Grid.Row="0"
+                        VerticalAlignment="Top"
+                        Content="Notes" 
+                        Style="{StaticResource BaseStyle}"
+                        Margin="5 35 30 10"/>
+
+
+        
+                    <local1:DiaryItemContentControl
+                        />
+
+            </Grid>
+            
+        </Grid>
     </Grid>
 </Window>
