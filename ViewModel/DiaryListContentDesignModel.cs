@@ -17,7 +17,7 @@ namespace MyDiary
         {
             Content = "I woke up by 6am, said my prayer and prepared to go out for work, at work I was given plenty tasks which I completed before days end." +
                 " After work, I met up with Sandra at Carter's Lounge";
-            TimeSaved = DateTime.UtcNow;
+            TimeSaved = DateTime.Now;
             isOpen = false;
         }
         #endregion

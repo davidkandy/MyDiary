@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d" 
              d:DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
-             d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="250"
+             d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
              >
     <Grid>
-        <Border Background="{StaticResource LightDarkGreenBrush}" CornerRadius="30">
+        <Border Background="{StaticResource LightDarkGreenBrush}" CornerRadius="20">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -19,12 +19,12 @@
                 <!--Content of the diary-->
                 <Grid Grid.Row="0">
                     <TextBlock
+                        Foreground="{StaticResource LightWhiteBrush}"
                         Text="{Binding Content}"
                         FontFamily="{StaticResource FontAwesome}"
                         FontSize="{StaticResource FontSizeRegular}"
                         TextWrapping="WrapWithOverflow"
                         Padding="20"
-                        Foreground="{StaticResource DarkGreyBrush}"
                         />
                 </Grid>
                 
@@ -34,16 +34,19 @@
                     <TextBlock Text="{Binding TimeSaved}"
                                Style="{StaticResource BaseTextBlockStyle}"
                                TextWrapping="WrapWithOverflow"
+                               Foreground="{StaticResource LightWhiteBrush}"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="5 5 0 20"/>
                     <!--Edit Button-->
-                    <Button Content="{StaticResource FontAwesomePen}" 
-                            Style="{StaticResource IconButton}"
-                            Command="{Binding EditCommand}"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Margin="5 5 5 20"/>
+                    <Button
+                        Content="{StaticResource FontAwesomePen}" 
+                        Style="{StaticResource DiaryContentEditButton}"
+                        Cursor="Hand"
+                        Command="{Binding EditCommand}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="5 5 5 20"/>
                 </StackPanel>
                 
             </Grid>

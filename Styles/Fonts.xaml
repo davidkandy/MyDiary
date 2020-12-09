@@ -13,7 +13,7 @@
 
     <!--Style for Controls-->
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
+        <Setter Property="FontFamily" Value="{StaticResource LatoBold}"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
     </Style>
 
@@ -33,7 +33,7 @@
     
     
     <!--Font Sizes-->
-    <system:Double x:Key="FontSizeVerySmall">8</system:Double>
+    <system:Double x:Key="FontSizeVerySmall">5</system:Double>
     <system:Double x:Key="FontSizeSmall">10</system:Double>
     <system:Double x:Key="FontSizeRegular">16</system:Double>
     <system:Double x:Key="FontSizeLarge">20</system:Double>
@@ -42,9 +42,9 @@
     <!--Font Icons-->
     <system:String x:Key="FontAwesomeCross">&#xf055;</system:String>
     <system:String x:Key="FontAwesomeStar">&#xf005;</system:String>
-    <system:String x:Key="FontAwesomePen">&#xf5ac;</system:String>
+    <system:String x:Key="FontAwesomePen">&#xf14b;</system:String>
     <system:String x:Key="FontAwesomeCancel">&#xf00d;</system:String>
-    <system:String x:Key="FontAwesomeMinimize">&#xf00d;</system:String>
+    <system:String x:Key="FontAwesomeMinimize">&#xf068;</system:String>
     <system:String x:Key="FontAwesomeMaximize">&#xf065;</system:String>
     <system:String x:Key="FontAwesomeResize">&#xf066;</system:String>
     

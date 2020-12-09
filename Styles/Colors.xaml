@@ -7,8 +7,11 @@
 
     <Color x:Key="DarkGrey">#000</Color>
     <SolidColorBrush x:Key="DarkGreyBrush" Color="{StaticResource DarkGrey}"/>
-    
+
     <Color x:Key="LightWhite">#FFF</Color>
     <SolidColorBrush x:Key="LightWhiteBrush" Color="{StaticResource LightWhite}"/>
+
+    <Color x:Key="BrightRed">#da1f1f</Color>
+    <SolidColorBrush x:Key="BrightRedBrush" Color="{StaticResource BrightRed}"/>
 
 </ResourceDictionary>
