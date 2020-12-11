@@ -7,44 +7,46 @@
         mc:Ignorable="d"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
         WindowStyle="None"
-        Title="My Diary" Height="600" Width="970">
-    
+        Icon="Images/Logo/diary.ico"
+        Title="My Diary" Height="600" Width="980">
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
         <!--Main Window-->
-        <Grid Grid.Column="0" Panel.ZIndex="1">
+        <Grid Panel.ZIndex="1">
             <Grid.RowDefinitions>
                 <!--Title Bar-->
                 <RowDefinition Height="Auto"/>
                 <!--Main Content-->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-        </Grid>
 
-        <Grid Grid.Row="0" Height="50">
-            <Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Height="50">
+                <Grid.ColumnDefinitions>
+                    <!--Icon-->
+                    <ColumnDefinition Width="Auto"/>
+                    <!--Title-->
+                    <ColumnDefinition Width="*"/>
+                    <!--Windows Buttons-->
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
                 <!--Icon-->
-                <ColumnDefinition Width="Auto"/>
-                <!--Title-->
-                <ColumnDefinition Width="*"/>
-                <!--Windows Buttons-->
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Margin="10" 
+                    Style="{StaticResource IconButton}"
+                    Command="{Binding MenuCommand}">
+                    <Image Height="20" Source="Images/Logo/diary.ico" Stretch="Fill"/>
+                </Button>
 
-            <!--Icon-->
-            <Button Grid.Column="0" VerticalAlignment="Center" Margin="10" Style="{StaticResource IconButton}">
-                <Image Height="20" Source="Images/Logo/diary.ico" Stretch="Fill"/>
-            </Button>
-            
-            <!--Title-->
-            <Viewbox Grid.Column="1" Height="30" Width="65" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <StackPanel>
-                    <TextBlock 
+                <!--Title-->
+                <Viewbox Grid.Column="1" Grid.ColumnSpan="3" Height="30" Width="65" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <StackPanel>
+                        <TextBlock 
                         Style="{StaticResource BaseTextBlockStyle}"
                         FontFamily="{StaticResource LatoRegular}"
                         FontSize="{StaticResource FontSizeSmall}"
@@ -56,63 +58,81 @@
                                                     <Run Text="A" Foreground="{StaticResource DarkGreyBrush}" />
                                                     <Run Text="R" Foreground="{StaticResource LightDarkGreenBrush}" />
                                                     <Run Text="Y" Foreground="{StaticResource DarkGreyBrush}" />
-                    </TextBlock>
-                    <TextBlock 
+                        </TextBlock>
+                        <TextBlock 
                         FontSize="{StaticResource FontSizeVerySmall}"
                         Text="by kandi"
                         Foreground="{StaticResource DarkGreyBrush}"
                         TextAlignment="Center" />
+                    </StackPanel>
+                </Viewbox>
+
+                <!-- Window Buttons -->
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Width="50"
+                        Style="{StaticResource WindowsControlButton}"
+                        Content="{StaticResource FontAwesomeMinimize}" 
+                        Command="{Binding MinimizeCommand}"/>
+                    <Button Width="50"
+                        Style="{StaticResource WindowsControlButton}" 
+                        Content="{StaticResource FontAwesomeMaximize}" 
+                        Command="{Binding MaximizeCommand}"/>
+                    <Button Width="50" 
+                        x:Name="CloseButton"
+                        Style="{StaticResource WindowsCloseButton}" 
+                        Content="{StaticResource FontAwesomeCancel}"
+                        Click="CloseButton_Click"/>
                 </StackPanel>
-            </Viewbox>
+            </Grid>
 
-            <!-- Window Buttons -->
-            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button Width="50" Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeMinimize}" />
-                <Button Width="50" Style="{StaticResource WindowsControlButton}" Content="{StaticResource FontAwesomeMaximize}" />
-                <Button Width="50" Style="{StaticResource WindowsCloseButton}" Content="{StaticResource FontAwesomeCancel}" />
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
+            <Grid Grid.Row="1">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!--Left Column-->
-            <Grid Grid.Column="0" Background="White" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <Label 
+                <!--Left Column-->
+                <Grid Grid.Column="0" Background="White" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label 
                         Margin="15 0 15 45"
                         Style="{StaticResource BaseStyle}" 
                         FontSize="{StaticResource FontSizeVeryLarge}"
                         Content="My Diary"/>
 
-                <!-- Corner radius -->
-                <Grid>
+                    <!-- Corner radius -->
+                    <Grid>
 
-                    <Button
+                        <Button
                         Cursor="Hand"
                         Style="{StaticResource IconButton}"
                         Content="{StaticResource FontAwesomeCross}"/>
 
+                    </Grid>
+
                 </Grid>
 
-            </Grid>
+                <Border
+                    Grid.Column="1"
+                    Width="1"
+                    Margin="2"
+                    Background="#8888"/>
 
-            <!--Right Column-->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <!--Right Column-->
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <!--Notes Label-->
-                <Label Grid.Row="0"
+                    <!--Notes Label-->
+                    <Label Grid.Row="0"
                             VerticalAlignment="Top"
                             Content="Notes" 
                             Style="{StaticResource BaseStyle}"
@@ -121,48 +141,49 @@
                         
                             Margin="5 35 30 10"/>
 
-                <!--Diary Contents-->
-                <WrapPanel Grid.Row="1">
-                    <local1:DiaryItemContentControl 
+                    <!--Diary Contents-->
+                    <WrapPanel Grid.Row="1">
+                        <local1:DiaryItemContentControl 
                                     HorizontalAlignment="Left" 
                                     VerticalAlignment="Top"
                                     Margin="5"
                                     />
-                    <local1:DiaryItemContentControl 
+                        <local1:DiaryItemContentControl 
                                 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Top"
                                         Margin="5"
                                         />
-                    <local1:DiaryItemContentControl 
+                        <local1:DiaryItemContentControl 
                                 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Top"
                                         Margin="5"
                                         />
 
-                    <local1:DiaryItemContentControl 
+                        <local1:DiaryItemContentControl 
                                 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Top"
                                         Margin="5"
                                         />
-                    <local1:DiaryItemContentControl 
+                        <local1:DiaryItemContentControl 
                                 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Top"
                                         Margin="5"
                                         />
-                    <local1:DiaryItemContentControl 
+                        <local1:DiaryItemContentControl 
                                 
                                         HorizontalAlignment="Left" 
                                         VerticalAlignment="Top"
                                         Margin="5"
                                         />
-                </WrapPanel>
+                    </WrapPanel>
+
+                </Grid>
 
             </Grid>
-
         </Grid>
     </Grid>
 </Window>

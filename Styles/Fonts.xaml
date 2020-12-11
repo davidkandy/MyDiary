@@ -35,6 +35,7 @@
     <!--Font Sizes-->
     <system:Double x:Key="FontSizeVerySmall">5</system:Double>
     <system:Double x:Key="FontSizeSmall">10</system:Double>
+    <system:Double x:Key="FontSizeMedium">13</system:Double>
     <system:Double x:Key="FontSizeRegular">16</system:Double>
     <system:Double x:Key="FontSizeLarge">20</system:Double>
     <system:Double x:Key="FontSizeVeryLarge">25</system:Double>

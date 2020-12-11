@@ -76,6 +76,7 @@
     <Compile Include="ViewModel\DiaryListContentDesignModel.cs" />
     <Compile Include="ViewModel\DiaryListItemContentViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand\RelayCommand.cs" />
+    <Compile Include="WindowResizer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

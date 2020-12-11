@@ -19,7 +19,7 @@
                 <!--Content of the diary-->
                 <Grid Grid.Row="0">
                     <TextBlock
-                        Foreground="{StaticResource LightWhiteBrush}"
+                        Foreground="{StaticResource DarkGreyBrush}"
                         Text="{Binding Content}"
                         FontFamily="{StaticResource FontAwesome}"
                         FontSize="{StaticResource FontSizeRegular}"
@@ -33,20 +33,22 @@
                     <!--Date and Time-->
                     <TextBlock Text="{Binding TimeSaved}"
                                Style="{StaticResource BaseTextBlockStyle}"
+                               FontSize="{StaticResource FontSizeMedium}"
                                TextWrapping="WrapWithOverflow"
-                               Foreground="{StaticResource LightWhiteBrush}"
+                               Foreground="{StaticResource DarkGreyBrush}"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Margin="5 5 0 20"/>
                     <!--Edit Button-->
                     <Button
+                        OpacityMask="{StaticResource LightDarkGreenBrush}"
                         Content="{StaticResource FontAwesomePen}" 
                         Style="{StaticResource DiaryContentEditButton}"
                         Cursor="Hand"
                         Command="{Binding EditCommand}"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Margin="5 5 5 20"/>
+                        Margin="25 5 5 20"/>
                 </StackPanel>
                 
             </Grid>
