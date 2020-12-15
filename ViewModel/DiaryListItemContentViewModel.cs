@@ -2,7 +2,7 @@
 
 namespace MyDiary
 {
-    public class DiaryListItemContentViewModel : DiaryItemContentViewModel
+    public class DiaryListItemContentViewModel : BaseViewModel
     {
         /// <summary>
         /// The content of each diary page

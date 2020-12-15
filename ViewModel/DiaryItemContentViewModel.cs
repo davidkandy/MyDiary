@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MyDiary
 {
-    public class DiaryItemContentViewModel : BaseViewModel
+    public class DiaryItemContentViewModel : DiaryListItemContentViewModel
     {
         #region Private fields 
         /// <summary>
@@ -13,6 +15,11 @@ namespace MyDiary
 
         private WindowResizer mWindowResizer;
 
+        /// <summary>
+        /// The content thread items for the list
+        /// </summary>
+        protected ObservableCollection<DiaryListItemContentViewModel> mItems;
+
         #endregion
 
         #region Public Properties
@@ -20,6 +27,37 @@ namespace MyDiary
         /// The title to display 
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// A new diary content awaiting to be saved and added to the list
+        /// </summary>
+        public string PendingContent;
+
+        /// <summary>
+        /// The content thread items for the list
+        /// NOTE: Do not call Items.Add to add messages to this list
+        ///       as it will make the FilteredItems out of sync
+        /// </summary>
+        public ObservableCollection<DiaryListItemContentViewModel> Items 
+        {
+            get => mItems;
+
+            set
+            {
+                //Make sure the list has changed
+                if (mItems == value) return;
+
+                //Update the value
+                mItems = value;
+                //Update filtered list to match
+                FilteredItems = new ObservableCollection<DiaryListItemContentViewModel>(mItems);
+            }
+        }
+
+        /// <summary>
+        /// The Content thread that includes any search filtering
+        /// </summary>
+        public ObservableCollection<DiaryListItemContentViewModel> FilteredItems { get; set; }
 
         #endregion
 
@@ -60,8 +98,12 @@ namespace MyDiary
         /// </summary>
         public ICommand MenuCommand;
 
-        #endregion
+        /// <summary>
+        /// Command that adds a new diary content to the list of contents
+        /// </summary>
+        public ICommand AddContentCommand;
 
+        #endregion
 
         #region Constructor
         public DiaryItemContentViewModel()
@@ -69,6 +111,7 @@ namespace MyDiary
             SaveCommand = new RelayCommand(Save);
             ClearAllTextCommand = new RelayCommand(ClearAllText);
             EditCommand = new RelayCommand(Edit);
+            AddContentCommand = new RelayCommand(AddContent);
 
             //Menu Commands
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
@@ -79,6 +122,34 @@ namespace MyDiary
         #endregion
 
         #region Command Methods
+
+        public void AddContent()
+        {
+            // Don't send a blank message
+            if (string.IsNullOrEmpty(PendingContent)) return;
+
+            // Ensure lists are not null
+            if (Items == null)
+                Items = new ObservableCollection<DiaryListItemContentViewModel>();
+
+            if (FilteredItems == null)
+                FilteredItems = new ObservableCollection<DiaryListItemContentViewModel>();
+
+            var content = new DiaryListItemContentViewModel
+            {
+                Content = PendingContent,
+                isOpen = false,
+                TimeSaved = DateTime.Today
+            };
+
+            // Add content to both lists
+            Items.Add(content);
+            FilteredItems.Add(content);
+
+            // Clear the Pending content 
+            PendingContent = string.Empty;
+
+        }
 
         public void Save()
         {
@@ -96,8 +167,7 @@ namespace MyDiary
         }
         #endregion
 
-
-        #region Private helpers
+        #region Private helper
         /// <summary>
         /// Gets the current mouse position on the screen
         /// </summary>
@@ -107,8 +177,6 @@ namespace MyDiary
             return mWindowResizer.GetCursorPosition();
         }
         #endregion
-
-
 
     }
 }

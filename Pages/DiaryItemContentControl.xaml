@@ -1,11 +1,10 @@
-﻿<UserControl x:Class="MyDiary.Pages.DiaryItemContentControl"
+﻿<UserControl x:Class="MyDiary.DiaryItemContentControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyDiary"
-             mc:Ignorable="d" 
-             d:DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
+             mc:Ignorable="d"
              d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
              >
     <Grid>
@@ -27,9 +26,15 @@
                         Padding="20"
                         />
                 </Grid>
-                
+
                 <!--The Date&Time Stamp and the Edit Button-->
-                <StackPanel Margin="20" Orientation="Horizontal" Grid.Row="1">
+                <Grid Margin="20" Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
                     <!--Date and Time-->
                     <TextBlock Text="{Binding TimeSaved}"
                                Style="{StaticResource BaseTextBlockStyle}"
@@ -38,18 +43,23 @@
                                Foreground="{StaticResource DarkGreyBrush}"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
-                               Margin="5 5 0 20"/>
+                               />
+                    
                     <!--Edit Button-->
-                    <Button
-                        OpacityMask="{StaticResource LightDarkGreenBrush}"
-                        Content="{StaticResource FontAwesomePen}" 
-                        Style="{StaticResource DiaryContentEditButton}"
-                        Cursor="Hand"
-                        Command="{Binding EditCommand}"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Margin="25 5 5 20"/>
-                </StackPanel>
+                    <Border Grid.Column="1">
+                        <Button Background="{StaticResource LightDarkGreenBrush}"
+                                Foreground="{StaticResource DarkGreyBrush}"
+                                Content="{StaticResource FontAwesomePen}" 
+                                Style="{StaticResource DiaryContentEditButton}"
+                                Cursor="Hand"
+                                Command="{Binding EditCommand}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0 0 7 0"
+                                />
+                    </Border>
+
+                </Grid>
                 
             </Grid>
         </Border>

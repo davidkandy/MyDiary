@@ -13,6 +13,7 @@
         <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}"/>
         <Setter Property="Margin" Value="0 10"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
     </Style>
     
@@ -29,7 +30,7 @@
     
     <!--Window Control Buttons-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="WindowsControlButton">
-        <Setter Property="Background" Value="{StaticResource LightWhiteBrush}"/>
+        <Setter Property="Foreground" Value="Transparent"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Height" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"/>
@@ -39,23 +40,20 @@
 
     </Style>
     
-    <!--Window Control Buttons-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource WindowsControlButton}" x:Key="WindowsCloseButton">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red" />
-                <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
     
     <!--Icon buttons for the DiaryItemContentControl Window-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButton}" x:Key="DiaryContentEditButton">
+    <Style TargetType="{x:Type Button}" x:Key="DiaryContentEditButton">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+        <Setter Property="Height" Value="{StaticResource FontSizeLarge}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}"/>
         
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource DarkGreyBrush}" />
-                <Setter Property="Background" Value="{StaticResource LightWhiteBrush}"/>
+                <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
