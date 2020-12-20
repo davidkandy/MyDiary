@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyDiary"
-             d:DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
              mc:Ignorable="d"
+             x:Name="DiaryContentControl"
              d:DesignHeight="450" d:DesignWidth="600">
     
     
-    <Border Padding="15" CornerRadius="15" Background="{StaticResource LightWhiteBrush}">
+    <Border Padding="10" CornerRadius="15" Background="{StaticResource LightWhiteBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <!--The Content Window For Writing your Diary-->
@@ -19,6 +19,7 @@
             </Grid.RowDefinitions>
 
             <ScrollViewer Visibility="Visible" Grid.Row="0">
+                
                 <TextBox
                     Tag="How did your day go?"
                     TextWrapping="WrapWithOverflow"
@@ -33,6 +34,7 @@
                     Foreground="{StaticResource DarkGreyBrush}"
                     x:Name="ContentTextBox"
                 />
+                
             </ScrollViewer>
             
 
@@ -40,24 +42,33 @@
             <StackPanel Orientation="Horizontal"
                 Grid.Row="1"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 >
                 
                 <!--Save-->
                 <Button
                     Content="{StaticResource FontAwesomeSave}"
                     FontFamily="{StaticResource FontAwesome}"
-                    Foreground="{StaticResource DarkGreyBrush}"
+                    Style="{StaticResource WindowsControlButton}"
+                    Cursor="Hand"
+                    ToolTip="Save"
                     Background="{StaticResource LightWhiteBrush}"
+                    BorderThickness="0"
                     Margin="5 5"
+                    x:Name="SaveButton"
+                    Click="SaveButton_Click"
                     />
                 
                 <!--Cancel-->
                 <Button
-                    Foreground="{StaticResource DarkGreyBrush}"
                     Background="{StaticResource LightWhiteBrush}"
                     Content="{StaticResource FontAwesomeCancel}"
                     FontFamily="{StaticResource FontAwesome}"
+                    Style="{StaticResource WindowsControlButton}"
+                    Cursor="Hand"
+                    ToolTip="Cancel"
+                    BorderThickness="0"
+                    Click="CancelButton_Click"
                     Margin="5 5"/>
             </StackPanel>
 

@@ -14,4 +14,7 @@
     <Color x:Key="BrightRed">#da1f1f</Color>
     <SolidColorBrush x:Key="BrightRedBrush" Color="{StaticResource BrightRed}"/>
 
+    <Color x:Key="BrightPurple">#8050f0</Color>
+    <SolidColorBrush x:Key="BrightPurpleBrush" Color="{StaticResource BrightPurple}"/>
+
 </ResourceDictionary>

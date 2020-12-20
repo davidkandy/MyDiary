@@ -8,24 +8,53 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!--Regular Button-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+    <Style TargetType="{x:Type Button}" x:Key="RegularButton" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}"/>
         <Setter Property="Margin" Value="0 10"/>
-        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontFamily" Value="{StaticResource LatoRegular}"/>
+    </Style>
+    
+    <!-- Hoverless Button-->
+    <Style TargetType="{x:Type Button}" x:Key="Hoverless">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <!--Icon Buttons-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="IconButton">
-        <Setter Property="Background" Value="{StaticResource LightWhiteBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource DarkGreyBrush}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
-        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
-        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}" x:Key="IconButton">
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
         <Setter Property="Margin" Value="10 45 10 10"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <!-- Normal buttons-->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}" x:Key="NormalButtons">
+
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGreyBrush}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Width" Value="25"/>
+                <Setter Property="Margin" Value="10 16 10 16"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Background" Value="{StaticResource DarkGreyBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource LightWhiteBrush}" />
+            </Trigger>
+        </Style.Triggers>
+
     </Style>
     
     <!--Window Control Buttons-->
@@ -33,11 +62,38 @@
         <Setter Property="Foreground" Value="Transparent"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Height" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"/>
-        <Setter Property="Width" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
 
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource LightWhiteBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource BrightPurpleBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    
+    <!-- Windows Close button -->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource WindowsControlButton}" x:Key="WindowsCloseButton">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     

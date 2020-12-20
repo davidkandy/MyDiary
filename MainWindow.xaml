@@ -20,7 +20,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Height="50">
+        <Grid Grid.Row="0" Height="40">
             <Grid.ColumnDefinitions>
                 <!--Icon-->
                 <ColumnDefinition Width="Auto"/>
@@ -50,9 +50,9 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
                                                             <Run Text="D" Foreground="{StaticResource DarkGreyBrush}" />
-                                                            <Run Text="I" Foreground="{StaticResource LightDarkGreenBrush}" />
+                                                            <Run Text="I" Foreground="{StaticResource BrightPurpleBrush}" />
                                                             <Run Text="A" Foreground="{StaticResource DarkGreyBrush}" />
-                                                            <Run Text="R" Foreground="{StaticResource LightDarkGreenBrush}" />
+                                                            <Run Text="R" Foreground="{StaticResource BrightPurpleBrush}" />
                                                             <Run Text="Y" Foreground="{StaticResource DarkGreyBrush}" />
                     </TextBlock>
                     <TextBlock 
@@ -76,10 +76,10 @@
                     Content="{StaticResource FontAwesomeMaximize}" 
                     Command="{Binding MaximizeCommand}"/>
                 <Button
-                    Background="{StaticResource LightWhiteBrush}"
+                    Background="Red"
                     Width="40" 
                     x:Name="CloseButton"
-                    Style="{StaticResource WindowsControlButton}" 
+                    Style="{StaticResource WindowsCloseButton}" 
                     Content="{StaticResource FontAwesomeCancel}"
                     Click="CloseButton_Click"/>
             </StackPanel>
@@ -109,13 +109,28 @@
 
                 <!-- Corner radius -->
                 <Grid Grid.Row="1">
-                    <Button
+
+                    <Border CornerRadius="100"
+                            Width="25"
+                            Height="25"
+                            x:Name="Circle"
+                            Background="{StaticResource BrightPurpleBrush}"/>
+
+                    <Grid>
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=Circle}" />
+                        </Grid.OpacityMask>
+
+                        <Button
                             x:Name="AddNewContentButton"
                             Cursor="Hand"
-                            Style="{StaticResource IconButton}"
+                            Style="{StaticResource NormalButtons}"
                             Content="{StaticResource FontAwesomeCross}"
-                            />
+                            Margin="0 16"
+                            Height="25"
+                            Width="25"/>
 
+                    </Grid>
                 </Grid>
 
             </Grid>
@@ -123,7 +138,7 @@
             <Border
                     Grid.Column="1"
                     Width="1"
-                    Margin="2 0"
+                    Margin="2 0 2 4"
                     Background="#8888"/>
 
             <!--Right Column-->
@@ -136,28 +151,27 @@
 
                 <!--Notes Label-->
                 <Label Grid.Row="0"
-                            VerticalAlignment="Top"
-                            Content="Notes" 
-                            Style="{StaticResource BaseStyle}"
-                            FontFamily="{StaticResource LatoRegular}"
-                            FontSize="{StaticResource FontSizeVeryLarge}"
-                        
-                            Margin="5,35,12,0"/>
+                       VerticalAlignment="Top"
+                       Content="Notes" 
+                       Style="{StaticResource BaseStyle}"
+                       FontFamily="{StaticResource LatoRegular}"
+                       FontSize="{StaticResource FontSizeVeryLarge}"
+                       Margin="5,35,12,0"/>
 
                 <Grid Grid.Row="1">
                     <!--The Diary Content Window-->
                     <local:DiaryContentWindow
                         x:Name="DiaryContentDisplay"
-                        Visibility="Visible"/>
+                        Visibility="Hidden"/>
 
                     <!--The Diary Item Content Control Window-->
                     <local:DiaryItemContentControl 
-                        DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
                         x:Name="ItemContentWindow"
+                        DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
                         Margin="5"
-                        Visibility="Hidden"/>
+                        Visibility="Visible"/>
                 </Grid>
 
             </Grid>

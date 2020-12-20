@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -16,12 +17,13 @@ namespace MyDiary
         {
             InitializeComponent();
 
+            Console.WriteLine(DateTime.MinValue);
 
             string connectionString = ConfigurationManager.ConnectionStrings["MyDiary.Properties.Settings.MyDiaryDBConnectionString"].ConnectionString;
 
         }
 
-        private void SaveSpecificContent()
+        private void SaveSpecificContent(object sender, RoutedEventArgs e)
         {
             string query = "select * from User a  inner join UserContent uc on a.Id = uc.ContentId where uc.UserId = @UserId";
             SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);

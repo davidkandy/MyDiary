@@ -41,7 +41,7 @@
     <system:Double x:Key="FontSizeVeryLarge">25</system:Double>
     
     <!--Font Icons-->
-    <system:String x:Key="FontAwesomeCross">&#xf055;</system:String>
+    <system:String x:Key="FontAwesomeCross">&#xf067;</system:String>
     <system:String x:Key="FontAwesomeStar">&#xf005;</system:String>
     <system:String x:Key="FontAwesomePen">&#xf14b;</system:String>
     <system:String x:Key="FontAwesomeCancel">&#xf00d;</system:String>
