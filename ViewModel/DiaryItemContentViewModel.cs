@@ -153,7 +153,8 @@ namespace MyDiary
 
         public void Save()
         {
-
+            var page = new DiaryPage();
+            DatabaseManager.AddPage(page);
         }
 
         public void ClearAllText()
