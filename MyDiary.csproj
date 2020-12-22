@@ -79,7 +79,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Diary.cs" />
+    <Compile Include="Models\Entities\DiaryPage.cs" />
     <Compile Include="DiaryContentWindow.xaml.cs">
       <DependentUpon>DiaryContentWindow.xaml</DependentUpon>
     </Compile>
