@@ -79,10 +79,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Diary.cs" />
     <Compile Include="DiaryContentWindow.xaml.cs">
       <DependentUpon>DiaryContentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiaryPage.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\DiaryItemContentViewModel.cs" />
     <Compile Include="ViewModel\DiaryListContentDesignModel.cs" />
