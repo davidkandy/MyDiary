@@ -34,7 +34,7 @@
     <!--Icon Buttons-->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}" x:Key="IconButton">
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-        <Setter Property="Margin" Value="10 45 10 10"/>
+        <Setter Property="Margin" Value="10"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
     
@@ -58,33 +58,21 @@
     </Style>
     
     <!--Window Control Buttons-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" x:Key="WindowsControlButton">
-        <Setter Property="Foreground" Value="Transparent"/>
-        <Setter Property="Foreground" Value="Black"/>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}" x:Key="WindowsControlButton">
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
 
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{TemplateBinding Content}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource LightWhiteBrush}" />
+                <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="{StaticResource BrightPurpleBrush}"/>
             </Trigger>
         </Style.Triggers>
 
     </Style>
-
     
     <!-- Windows Close button -->
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource WindowsControlButton}" x:Key="WindowsCloseButton">
@@ -95,8 +83,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    
+
     <!--Icon buttons for the DiaryItemContentControl Window-->
     <Style TargetType="{x:Type Button}" x:Key="DiaryContentEditButton">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>

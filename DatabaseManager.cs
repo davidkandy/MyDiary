@@ -7,9 +7,9 @@ namespace MyDiary
 {
     public static class DatabaseManager
     {
-        static LiteDatabase Database { get; } = new LiteDatabase(DatabasePath);
-
         static string DatabasePath { get; set; } = "Diary.db";
+
+        static LiteDatabase Database { get; } = new LiteDatabase(DatabasePath);
 
         public static void AddPage(DiaryPage diary)
         {

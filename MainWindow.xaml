@@ -9,89 +9,162 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Icon="Images/Logo/diary.ico"
-        Title="My Diary" Height="600" Width="980">
+        Title="My Diary" MinHeight="600" MinWidth="980">
 
+    <Window.Resources>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border>
+                            <Grid>
+                                <Border
+                                    x:Name="Container"
+                                    Padding="10"
+                                    Background="White"
+                                    CornerRadius="10"/>
+
+                                <Border
+                                    CornerRadius="10"
+                                    Background="White">
+
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth=".5" Opacity=".2"/>
+                                    </Border.Effect>
+
+                                </Border>
+
+                                <Grid>
+
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Container}"/>
+                                    </Grid.OpacityMask>
+
+                                    <Grid.RowDefinitions>
+                                        <!--Title Bar-->
+                                        <RowDefinition Height="45"/>
+                                        <!--Main Content-->
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--Title Bar-->
+                                    <Grid Grid.Column="0" Panel.ZIndex="1"> 
+                                        
+                                        <Grid.ColumnDefinitions>
+                                            <!--Icon-->
+                                            <ColumnDefinition Width="Auto"/>
+                                            <!--Title-->
+                                            <ColumnDefinition Width="*"/>
+                                            <!--Windows Buttons-->
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--Icon-->
+                                         <Button Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Margin="10" 
+                                                Style="{StaticResource IconButton}"
+                                                Command="{Binding MenuCommand}"
+                                                WindowChrome.IsHitTestVisibleInChrome="True">
+
+                                            <Image Height="20" Source="Images/Logo/diary.ico" Stretch="Fill"/>
+                                        </Button>
+
+                                        <!--Title-->
+                                        <Viewbox Grid.Column="1" Grid.ColumnSpan="3" Height="30" Width="65" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                            <StackPanel>
+                                                <TextBlock 
+                                                    Style="{StaticResource BaseTextBlockStyle}"
+                                                    FontFamily="{StaticResource LatoRegular}"
+                                                    FontSize="{StaticResource FontSizeSmall}"
+                                                    Margin="0,0,0,-3"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                                    
+                                                        <Run Text="D" Foreground="{StaticResource DarkGreyBrush}" />
+                                                        <Run Text="I" Foreground="{StaticResource BrightPurpleBrush}" />
+                                                        <Run Text="A" Foreground="{StaticResource DarkGreyBrush}" />
+                                                        <Run Text="R" Foreground="{StaticResource BrightPurpleBrush}" />
+                                                        <Run Text="Y" Foreground="{StaticResource DarkGreyBrush}" />
+                                                    
+                                                </TextBlock>
+                                                <TextBlock 
+                                                    FontSize="{StaticResource FontSizeVerySmall}"
+                                                    Text="by kandi"
+                                                    Foreground="{StaticResource DarkGreyBrush}"
+                                                    TextAlignment="Center" />
+                                            </StackPanel>
+                                        </Viewbox>
+
+                                        <!-- Window Buttons -->
+                                        <StackPanel 
+                                                Margin="2 5"
+                                                Orientation="Horizontal"
+                                                Grid.Column="2"
+                                                Height="35"
+                                                HorizontalAlignment="Right" 
+                                                VerticalAlignment="Center">
+                                            
+                                            <Button
+                                                x:Name="Minimize"
+                                                Width="40"
+                                                Style="{StaticResource WindowsControlButton}"
+                                                Content="{StaticResource FontAwesomeMinimize}" 
+                                                ClipToBounds="True"
+                                                Command="{Binding MinimizeCommand}"
+                                                />
+
+                                            <Button
+                                                Width="40"
+                                                Style="{StaticResource WindowsControlButton}" 
+                                                Content="{StaticResource FontAwesomeMaximize}" 
+                                                ClipToBounds="True"
+                                                Command="{Binding MaximizeCommand}"
+                                                />
+
+                                            <Button
+                                                Width="40"
+                                                Style="{StaticResource WindowsCloseButton}" 
+                                                Content="{StaticResource FontAwesomeCancel}"
+                                                ClipToBounds="True"
+                                                Command="{Binding CloseCommand}"
+                                                />
+
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                </Grid>
+
+                                <!--Main Content-->
+                                <Border Padding="0" Grid.Row="1" ClipToBounds="True">
+                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="35"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            ResizeBorderThickness="2"
+            />
+    </WindowChrome.WindowChrome>
 
     <Grid Panel.ZIndex="1">
-        <Grid.RowDefinitions>
-            <!--Title Bar-->
-            <RowDefinition Height="Auto"/>
-            <!--Main Content-->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Height="40">
-            <Grid.ColumnDefinitions>
-                <!--Icon-->
-                <ColumnDefinition Width="Auto"/>
-                <!--Title-->
-                <ColumnDefinition Width="*"/>
-                <!--Windows Buttons-->
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <!--Icon-->
-            <Button Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Margin="10" 
-                            Style="{StaticResource IconButton}"
-                            Command="{Binding MenuCommand}">
-                <Image Height="20" Source="Images/Logo/diary.ico" Stretch="Fill"/>
-            </Button>
-
-            <!--Title-->
-            <Viewbox Grid.Column="1" Grid.ColumnSpan="3" Height="30" Width="65" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <StackPanel>
-                    <TextBlock 
-                                Style="{StaticResource BaseTextBlockStyle}"
-                                FontFamily="{StaticResource LatoRegular}"
-                                FontSize="{StaticResource FontSizeSmall}"
-                                Margin="0,0,0,-3"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center">
-                                                            <Run Text="D" Foreground="{StaticResource DarkGreyBrush}" />
-                                                            <Run Text="I" Foreground="{StaticResource BrightPurpleBrush}" />
-                                                            <Run Text="A" Foreground="{StaticResource DarkGreyBrush}" />
-                                                            <Run Text="R" Foreground="{StaticResource BrightPurpleBrush}" />
-                                                            <Run Text="Y" Foreground="{StaticResource DarkGreyBrush}" />
-                    </TextBlock>
-                    <TextBlock 
-                                FontSize="{StaticResource FontSizeVerySmall}"
-                                Text="by kandi"
-                                Foreground="{StaticResource DarkGreyBrush}"
-                                TextAlignment="Center" />
-                </StackPanel>
-            </Viewbox>
-
-            <!-- Window Buttons -->
-            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button Width="40"
-                        Background="{StaticResource LightWhiteBrush}"
-                        Style="{StaticResource WindowsControlButton}"
-                        Content="{StaticResource FontAwesomeMinimize}" 
-                        Command="{Binding MinimizeCommand}"/>
-                <Button Background="{StaticResource LightWhiteBrush}"
-                    Width="40"
-                    Style="{StaticResource WindowsControlButton}" 
-                    Content="{StaticResource FontAwesomeMaximize}" 
-                    Command="{Binding MaximizeCommand}"/>
-                <Button
-                    Background="Red"
-                    Width="40" 
-                    x:Name="CloseButton"
-                    Style="{StaticResource WindowsCloseButton}" 
-                    Content="{StaticResource FontAwesomeCancel}"
-                    Click="CloseButton_Click"/>
-            </StackPanel>
-        </Grid>
-
-        <Grid Grid.Row="1">
-
-            <Grid.ColumnDefinitions>
+        
+        <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
 
             <!--Left Column-->
             <Grid Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -138,12 +211,12 @@
             <Border
                     Grid.Column="1"
                     Width="1"
-                    Margin="2 0 2 4"
+                    Margin="2 6 2 6"
                     Background="#8888"/>
 
             <!--Right Column-->
             <Grid Grid.Column="2">
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -161,22 +234,23 @@
                 <Grid Grid.Row="1">
                     <!--The Diary Content Window-->
                     <local:DiaryContentWindow
+                        d:DataContext="{x:Static local:DiaryContentWindowDesignModel.Instance}"
                         x:Name="DiaryContentDisplay"
-                        Visibility="Hidden"/>
+                        Visibility="Visible"
+                        DataContext=""
+                        />
 
-                    <!--The Diary Item Content Control Window-->
-                    <local:DiaryItemContentControl 
+                <!--The Diary Item Content Control Window-->
+                <local:DiaryItemContentControl 
                         x:Name="ItemContentWindow"
-                        DataContext="{x:Static local:DiaryListContentDesignModel.Instance}"
+                        DataContext="{x:Static local:DiaryItemWindowDesignModel.Instance}"
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
                         Margin="5"
-                        Visibility="Visible"/>
+                        Visibility="Hidden"/>
                 </Grid>
 
             </Grid>
-
-        </Grid>
         
     </Grid>
 

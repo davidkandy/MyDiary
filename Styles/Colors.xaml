@@ -17,4 +17,10 @@
     <Color x:Key="BrightPurple">#8050f0</Color>
     <SolidColorBrush x:Key="BrightPurpleBrush" Color="{StaticResource BrightPurple}"/>
 
+    <Color x:Key="BackgroundLight">#efefef</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}" />
+
+    <Color x:Key="ForegroundDark">#bdbdbd</Color>
+    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}" />
+
 </ResourceDictionary>

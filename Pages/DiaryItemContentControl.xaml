@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d"
              x:Name="DiaryItemControl"
+             d:DataContext="{x:Static local:DiaryItemWindowDesignModel.Instance}"
              d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
              >
     <Grid>
@@ -17,7 +18,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Content of the diary-->
-                <Grid Grid.Row="0">
+                <Grid>
                     <TextBlock
                         Foreground="{StaticResource DarkGreyBrush}"
                         Text="{Binding Content}"
@@ -39,7 +40,7 @@
                     <!--Date and Time-->
                     <TextBlock Text="{Binding TimeSaved}"
                                Style="{StaticResource BaseTextBlockStyle}"
-                               FontSize="{StaticResource FontSizeMedium}"
+                               FontSize="{StaticResource FontSizeSmall}"
                                TextWrapping="WrapWithOverflow"
                                Foreground="{StaticResource DarkGreyBrush}"
                                HorizontalAlignment="Left"

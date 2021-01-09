@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d"
+             d:DataContext="{x:Static local:DiaryContentWindowDesignModel.Instance}"
              x:Name="DiaryContentControl"
              d:DesignHeight="450" d:DesignWidth="600">
     
@@ -22,11 +23,11 @@
                 
                 <TextBox
                     Tag="How did your day go?"
-                    TextWrapping="WrapWithOverflow"
+                    TextWrapping="Wrap"
                     Padding="5"
-                    Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Content}"
                     AcceptsReturn="True"
-                    BorderThickness="0.5"
+                    BorderThickness="0.8"
                     VerticalScrollBarVisibility="Auto"
                     AcceptsTab="True"
                     FontFamily="{StaticResource LatoRegular}"
@@ -50,13 +51,13 @@
                     Content="{StaticResource FontAwesomeSave}"
                     FontFamily="{StaticResource FontAwesome}"
                     Style="{StaticResource WindowsControlButton}"
-                    Cursor="Hand"
                     ToolTip="Save"
                     Background="{StaticResource LightWhiteBrush}"
                     BorderThickness="0"
                     Margin="5 5"
                     x:Name="SaveButton"
                     Click="SaveButton_Click"
+                    Command="{Binding SaveCommand}"
                     />
                 
                 <!--Cancel-->
@@ -65,11 +66,13 @@
                     Content="{StaticResource FontAwesomeCancel}"
                     FontFamily="{StaticResource FontAwesome}"
                     Style="{StaticResource WindowsControlButton}"
-                    Cursor="Hand"
-                    ToolTip="Cancel"
+                    ToolTip="Close Window"
                     BorderThickness="0"
+                    Margin="5 5"
                     Click="CancelButton_Click"
-                    Margin="5 5"/>
+                    Command="{Binding CancelCommand}"
+                    />
+                
             </StackPanel>
 
         </Grid>

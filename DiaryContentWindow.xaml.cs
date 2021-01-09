@@ -9,10 +9,11 @@ namespace MyDiary
     /// </summary>
     public partial class DiaryContentWindow : UserControl
     {
-        
         public DiaryContentWindow()
         {
             InitializeComponent();
+
+            DataContext = new DiaryContentWindowDesignModel();
         }
 
         public void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -23,22 +24,11 @@ namespace MyDiary
             }
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        public void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string content = ContentTextBox.Text;
-
-                if (string.IsNullOrEmpty(content))
-                {
-                    var input = MessageBox.Show("Are you sure you don't want to write about your day?", "Incomplete Diary", MessageBoxButton.YesNo);
-                    if (input == MessageBoxResult.Yes) return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            var page = new DiaryPage();
+            DatabaseManager.AddPage(page);
         }
+
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -12,15 +11,20 @@ namespace MyDiary
     {
         SqlConnection sqlConnection;
 
-
+        // You don't need this. You can't create a window from thin air...
+        // private Window window;
         public MainWindow()
         {
             InitializeComponent();
 
-            Console.WriteLine(DateTime.MinValue);
-
             string connectionString = ConfigurationManager.ConnectionStrings["MyDiary.Properties.Settings.MyDiaryDBConnectionString"].ConnectionString;
 
+            var window = this;
+
+            var diaryCW = this.DiaryContentDisplay;
+            var diaryItemWindow = this.ItemContentWindow;
+
+            DataContext = new WindowsViewModel(this); // <= this also works.
         }
 
         private void SaveSpecificContent(object sender, RoutedEventArgs e)
@@ -35,9 +39,6 @@ namespace MyDiary
             }
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+
     }
 }
