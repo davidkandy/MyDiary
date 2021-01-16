@@ -49,6 +49,7 @@
     <system:String x:Key="FontAwesomeMaximize">&#xf065;</system:String>
     <system:String x:Key="FontAwesomeResize">&#xf066;</system:String>
     <system:String x:Key="FontAwesomeSave">&#xf0c7;</system:String>
+    <system:String x:Key="FontAwesomeShowFiles">&#xf56d;</system:String>
     
 
 </ResourceDictionary>

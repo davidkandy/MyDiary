@@ -1,13 +1,21 @@
 ﻿namespace MyDiary
 {
-    public class DiaryContentWindowDesignModel : DiaryContentWindowViewModel
-    {
-        public static DiaryContentWindowDesignModel Instance = new DiaryContentWindowDesignModel();
+    // I don't think you need this.
+    // Nvm.. WWecan delete it
+    // I'll leave that to you, later.
+    // Let's go see your bindings.
+    // Aiit... Where do we start from?
+    
+    //public class DiaryContentWindowDesignModel : DiaryContentWindowViewModel
+    //{
 
-        public DiaryContentWindowDesignModel()
-        {
-            Content = "Wahgwan Yo!!";
-            isOpen = true;
-        }
-    }
+    //    // I used it as the datacontext in the view 
+
+
+    //    public DiaryContentWindowDesignModel()
+    //    {
+    //        Content = "Hello!";
+    //        isOpen = true;
+    //    }
+    //}
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace MyDiary
 {
@@ -7,6 +8,8 @@ namespace MyDiary
     /// </summary>
     public partial class DiaryItemContentControl : UserControl
     {
+        public event EventHandler<DiaryPage> DiaryContent;
+
         public DiaryItemContentControl()
         {
             InitializeComponent();

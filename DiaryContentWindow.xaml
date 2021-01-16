@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d"
-             d:DataContext="{x:Static local:DiaryContentWindowDesignModel.Instance}"
              x:Name="DiaryContentControl"
              d:DesignHeight="450" d:DesignWidth="600">
     
@@ -17,27 +16,44 @@
                 <RowDefinition Height="*"/>
                 <!--Contains the save/cancel Buttons-->
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <ScrollViewer Visibility="Visible" Grid.Row="0">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Height="35"
+                        Text="{Binding Title}"
+                        FontFamily="{StaticResource LatoRegular}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        BorderThickness=".5"
+                        Padding="3"
+                        />
+
+                    <TextBox Grid.Row="1"
+                        x:Name="ContentTextBox"
+                        TextWrapping="Wrap"
+                        Padding="5"
+                        Text="{Binding Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        AcceptsReturn="True"
+                        AcceptsTab="True"
+                        BorderThickness="0.8"
+                        VerticalScrollBarVisibility="Auto"
+                        FontFamily="{StaticResource LatoRegular}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Foreground="{StaticResource DarkGreyBrush}"
+                    />
+                </Grid>
                 
-                <TextBox
-                    Tag="How did your day go?"
-                    TextWrapping="Wrap"
-                    Padding="5"
-                    Text="{Binding Content}"
-                    AcceptsReturn="True"
-                    BorderThickness="0.8"
-                    VerticalScrollBarVisibility="Auto"
-                    AcceptsTab="True"
-                    FontFamily="{StaticResource LatoRegular}"
-                    FontSize="{StaticResource FontSizeRegular}"
-                    Foreground="{StaticResource DarkGreyBrush}"
-                    x:Name="ContentTextBox"
-                />
                 
             </ScrollViewer>
-            
 
             <!--Save and Cancel Buttons-->
             <StackPanel Orientation="Horizontal"
@@ -56,7 +72,6 @@
                     BorderThickness="0"
                     Margin="5 5"
                     x:Name="SaveButton"
-                    Click="SaveButton_Click"
                     Command="{Binding SaveCommand}"
                     />
                 
@@ -69,7 +84,6 @@
                     ToolTip="Close Window"
                     BorderThickness="0"
                     Margin="5 5"
-                    Click="CancelButton_Click"
                     Command="{Binding CancelCommand}"
                     />
                 

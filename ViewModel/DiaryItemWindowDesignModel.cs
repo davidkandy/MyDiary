@@ -2,7 +2,7 @@
 
 namespace MyDiary
 {
-    public class DiaryItemWindowDesignModel : DiaryItemWindowViewModel
+    public class DiaryItemWindowDesignModel : DiaryItemContentViewModel
     {
         #region Singleton
         /// <summary>

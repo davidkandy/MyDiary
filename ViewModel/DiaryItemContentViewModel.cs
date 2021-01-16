@@ -4,8 +4,20 @@ using System.Windows.Input;
 
 namespace MyDiary
 {
-    public class DiaryItemWindowViewModel : BindableBase
+    public class DiaryItemContentViewModel : BindableBase
     {
+        public DiaryPage Page { get; set; }
+
+
+        /// <summary>
+        /// Title of the diary 
+        /// </summary>
+        public string Title
+        {
+            get { return Page.Title; }
+            set { Page.Title = value; }
+        }
+
         /// <summary>
         /// The content of each diary page
         /// </summary>
@@ -30,7 +42,7 @@ namespace MyDiary
         #endregion
 
         #region Contructor
-        public DiaryItemWindowViewModel()
+        public DiaryItemContentViewModel()
         {
             var coe = new DiaryContentWindow();
 

@@ -1,24 +1,33 @@
 ﻿<UserControl x:Class="MyDiary.DiaryItemContentControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MyDiary"
-             mc:Ignorable="d"
-             x:Name="DiaryItemControl"
-             d:DataContext="{x:Static local:DiaryItemWindowDesignModel.Instance}"
-             d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
-             >
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:MyDiary"
+        mc:Ignorable="d"
+        x:Name="DiaryItemControl"
+        d:DataContext="{x:Static local:DiaryItemWindowDesignModel.Instance}"
+        d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
+        >
     <Grid>
         <Border Background="{StaticResource BrightPurpleBrush}" CornerRadius="20">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
+                <!--Title-->
+                <Label
+                    Content="{Binding Title}"
+                    FontSize="{StaticResource FontSizeMedium}"
+                    FontFamily="{StaticResource LatoRegular}"
+                    Padding="5"
+                    />
+
                 <!--Content of the diary-->
-                <Grid>
+                <Grid Grid.Row="1">
                     <TextBlock
                         Foreground="{StaticResource DarkGreyBrush}"
                         Text="{Binding Content}"
@@ -30,7 +39,7 @@
                 </Grid>
 
                 <!--The Date&Time Stamp and the Edit Button-->
-                <Grid Margin="20" Grid.Row="1">
+                <Grid Margin="20" Grid.Row="2">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>

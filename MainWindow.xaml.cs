@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
 
@@ -17,28 +18,32 @@ namespace MyDiary
         {
             InitializeComponent();
 
-            string connectionString = ConfigurationManager.ConnectionStrings["MyDiary.Properties.Settings.MyDiaryDBConnectionString"].ConnectionString;
-
             var window = this;
 
-            var diaryCW = this.DiaryContentDisplay;
+            DataContext = new WindowsViewModel(this); // <= this also works.
+
+            var diaryCW = this.DiaryContentWindow;
             var diaryItemWindow = this.ItemContentWindow;
 
-            DataContext = new WindowsViewModel(this); // <= this also works.
-        }
-
-        private void SaveSpecificContent(object sender, RoutedEventArgs e)
-        {
-            string query = "select * from User a  inner join UserContent uc on a.Id = uc.ContentId where uc.UserId = @UserId";
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
-
-            using (dataAdapter)
+            DiaryContentWindow.DiaryContent += (s, e) =>
             {
-                //sqlCommand.Parameters.AddWithValue("@UserId",);
-            }
-        }
+                diaryItemWindow.DataContext = e;
 
+                diaryItemWindow.Visibility = Visibility.Visible;
+                diaryCW.Visibility = Visibility.Hidden;
+
+            };
+
+            ItemContentWindow.DiaryContent += (s, e) =>
+            {
+                diaryCW.DataContext = e;
+
+                diaryCW.Visibility = Visibility.Visible;
+                diaryItemWindow.Visibility = Visibility.Hidden;
+                
+            };
+
+        }
 
     }
 }

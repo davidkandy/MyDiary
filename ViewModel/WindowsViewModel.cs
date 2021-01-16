@@ -1,4 +1,6 @@
 ﻿using Prism.Mvvm;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,11 +40,6 @@ namespace MyDiary
         public ICommand ClearAllTextCommand { get;}
 
         /// <summary>
-        /// Command to Edit the text in the content control
-        /// </summary>
-        public ICommand EditCommand { get;}
-
-        /// <summary>
         /// Command to Minimize the window
         /// </summary>
         public ICommand MinimizeCommand { get;}
@@ -63,9 +60,9 @@ namespace MyDiary
         public ICommand MenuCommand { get;}
 
         /// <summary>
-        /// Command that adds a new diary content to the list of contents
+        /// Command that adds a new diary content
         /// </summary>
-        public ICommand AddContentCommand { get;}
+        public ICommand NewContentCommand { get;}
 
         #endregion
 
@@ -76,7 +73,7 @@ namespace MyDiary
 
             SaveCommand = new RelayCommand(Save);
             ClearAllTextCommand = new RelayCommand(ClearAllText);
-            EditCommand = new RelayCommand(Edit);
+            NewContentCommand = new RelayCommand(NewContent);
 
             //Menu Commands
             
@@ -107,9 +104,15 @@ namespace MyDiary
 
         }
 
-        public void Edit()
+        public void NewContent()
         {
+            //var page = new DiaryPage();
+            //DatabaseManager.AddNewContent(page, page.Id, page.Title, page.Content, page.Created);
+            //var content = new DiaryContentWindowViewModel(page, page.Id, page.Title, page.Content, page.Created);
 
+            //DatabaseManager.AddPage(content);
+
+            DatabaseManager.GetPages();
         }
 
         #endregion

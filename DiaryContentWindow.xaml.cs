@@ -1,6 +1,6 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System;
 
 namespace MyDiary
 {
@@ -9,24 +9,21 @@ namespace MyDiary
     /// </summary>
     public partial class DiaryContentWindow : UserControl
     {
+        public event EventHandler<DiaryPage> DiaryContent;
+
         public DiaryContentWindow()
         {
             InitializeComponent();
 
-            DataContext = new DiaryContentWindowDesignModel();
-        }
-
-        public void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            lock (this)
+            Loaded += (s, e) =>
             {
-                DiaryContentControl.Visibility = Visibility.Hidden;
-            }
+                Console.WriteLine(this);
+                DataContext = new DiaryContentWindowViewModel();
+            };
         }
 
-        public void SaveButton_Click(object sender, RoutedEventArgs e)
+        public void Save(DiaryPage page)
         {
-            var page = new DiaryPage();
             DatabaseManager.AddPage(page);
         }
 
