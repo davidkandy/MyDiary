@@ -19,17 +19,6 @@ namespace MyDiary
             collection.Upsert(diary);
         }
 
-        public static void AddNewContent(DiaryPage newContent, ObjectId id, string title, string content, DateTime dateTime)
-        {
-            var pages = Database.GetCollection<DiaryPage>(nameof(DiaryPage));
-
-            // newContent = new DiaryPage { Id = id, Title = title, Content = content, Created = dateTime };
-
-            // var r1 = pages.Insert(newContent);
-
-
-        }
-
         public static DiaryPage GetPage(DateTime date)
         {
             var collection = Database.GetCollection<DiaryPage>(nameof(DiaryPage));

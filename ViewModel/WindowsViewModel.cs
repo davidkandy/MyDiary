@@ -78,6 +78,11 @@ namespace MyDiary
         /// </summary>
         public ICommand NewContentCommand { get;}
 
+        /// <summary>
+        /// Command to search for a particular diary content 
+        /// </summary>
+        public ICommand SearchCommand { get; }
+
         #endregion
 
         #region Constructor
@@ -87,10 +92,11 @@ namespace MyDiary
 
             SaveCommand = new RelayCommand(Save);
             ClearAllTextCommand = new RelayCommand(ClearAllText);
-            //NewContentCommand = new RelayCommand(NewContent);
+            NewContentCommand = new RelayCommand(NewContent);
+            SearchCommand = new RelayCommand(Search);
 
             //Menu Commands
-            
+
             MinimizeCommand = new RelayCommand(
                 () =>
                 {
@@ -107,6 +113,17 @@ namespace MyDiary
             var pages = DatabaseManager.GetPages();
             Pages = new List<DiaryPage>(pages);
         }
+
+        public void Search()
+        {
+            SearchResultPage srp = new SearchResultPage();
+            
+        }
+
+        public WindowsViewModel()
+        {
+
+        }
         #endregion
          
         #region Command Methods
@@ -121,24 +138,11 @@ namespace MyDiary
 
         }
 
-        /*
-        [STAThread]
         public void NewContent()
         {
-            Application app = new Application();
-            DiaryContentWindow dcwVM = new DiaryContentWindow();
-            dcwVM.Show();
-            app.Run(dcwVM);
-
-            //var page = new DiaryPage();
-            //DatabaseManager.AddNewContent(page, page.Id, page.Title, page.Content, page.Created);
-            //var content = new DiaryContentWindowViewModel(page, page.Id, page.Title, page.Content, page.Created);
-
-            //DatabaseManager.AddPage(content);
-
 
         }
-        */
+
         #endregion
 
         #region Private helper

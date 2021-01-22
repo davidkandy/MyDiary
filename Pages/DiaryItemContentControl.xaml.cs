@@ -8,8 +8,6 @@ namespace MyDiary
     /// </summary>
     public partial class DiaryItemContentControl : UserControl
     {
-        public event EventHandler<DiaryPage> DiaryContent;
-
         public DiaryItemContentControl()
         {
             InitializeComponent();

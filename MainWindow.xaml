@@ -189,38 +189,46 @@
                     <Border CornerRadius="100"
                             Width="25"
                             Height="25"
+                            Margin="10 -27 10 16"
                             x:Name="Circle"
-                            Background="{StaticResource LightWhiteBrush}"/>
+                            Background="{StaticResource BackgroundLightBrush}"/>
+                    
+                    <Border CornerRadius="100"
+                            Margin="10 70 10 0"
+                            Width="25"
+                            Height="25"
+                            x:Name="Circle2"
+                            Background="{StaticResource BackgroundLightBrush}"/>
 
                 <StackPanel Orientation="Vertical" Height="100">
                     <Grid>
                         <Grid.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=Circle}" />
+                            <VisualBrush Visual="{Binding ElementName=Circle}"/>
                         </Grid.OpacityMask>
 
                         <Button
-                            x:Name="AddNewContentButton"
-                            Cursor="Hand"
-                            Style="{StaticResource NormalButtons}"
-                            Content="{StaticResource FontAwesomeCross}"
-                            Command="{Binding NewContentCommand}"
-                            Margin="0 16"
-                            Height="25"
-                            Width="25"/>
+                                x:Name="AddNewContentButton"
+                                Cursor="Hand"
+                                Style="{StaticResource NormalButtons}"
+                                Content="{StaticResource FontAwesomeCross}"
+                                Command="{Binding NewContentCommand}"
+                                Margin="0 16"
+                                Height="25"
+                                Width="25"/>
 
                     </Grid>
-                    
+
                     <Grid>
                         <Grid.OpacityMask>
-                            <VisualBrush Visual="{Binding ElementName=Circle}" />
+                            <VisualBrush Visual="{Binding ElementName=Circle2}"/>
                         </Grid.OpacityMask>
 
                         <Button
                                 x:Name="ShowAllContentButton"
                                 Cursor="Hand"
                                 Style="{StaticResource NormalButtons}"
-                                Content="{StaticResource FontAwesomeShowFiles}"
-                                Command="{Binding NewContentCommand}"
+                                Content="{StaticResource FontAwesomeSearch}"
+                                Command="{Binding SearchCommand}"
                                 Margin="0 16"
                                 Height="25"
                                 Width="25"/>
@@ -256,33 +264,16 @@
 
             <Grid Grid.Row="1">
                 <!--The Diary Content Window-->
-					<local:DiaryContentWindow
-                        x:Name="DiaryContentWindow"
-                        Visibility="Hidden"
-                        />
+				<local:DiaryContentWindow
+                    x:Name="DiaryContentWindow"
+                    Visibility="Hidden"
+                    />
 
-                    <!--DisplayMemberPath="Title"-->
-                    <!--IsSynchronizedWithCurrentItem="True"-->
-                    <!--ItemsSource="{Binding Source=Pages}"-->
-
-                <ListBox
-                    Padding="5"
+                <local:SearchResultPage
+                    x:Name="SearchResultPage"
                     Visibility="Visible"
-                    x:Name="DiaryListContainer"
-                    SelectionMode="Multiple"
-                    >
-                    
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical" Height="35">
-                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
-                                <TextBlock Text="{Binding Content}" TextWrapping="Wrap"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                    
-                </ListBox>
-
+                    />
+                
                 <!--The Diary Item Content Control Window-->
                 <local:DiaryItemContentControl 
                         x:Name="ItemContentWindow"

@@ -50,6 +50,7 @@
     <system:String x:Key="FontAwesomeResize">&#xf066;</system:String>
     <system:String x:Key="FontAwesomeSave">&#xf0c7;</system:String>
     <system:String x:Key="FontAwesomeShowFiles">&#xf56d;</system:String>
+    <system:String x:Key="FontAwesomeSearch">&#xf002;</system:String>
     
 
 </ResourceDictionary>

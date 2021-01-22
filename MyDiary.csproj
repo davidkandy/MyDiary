@@ -95,6 +95,9 @@
       <DependentUpon>DiaryContentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\DiaryPage.cs" />
+    <Compile Include="Pages\SearchResultPage.xaml.cs">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\DiaryContentWindowDesignModel.cs" />
     <Compile Include="ViewModel\DiaryContentWindowViewModel.cs" />
     <Compile Include="ViewModel\DiaryItemWindowDesignModel.cs" />
@@ -119,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\DiaryItemContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SearchResultPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
