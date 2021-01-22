@@ -23,9 +23,9 @@ namespace MyDiary
         {
             var pages = Database.GetCollection<DiaryPage>(nameof(DiaryPage));
 
-            newContent = new DiaryPage { Id = id, Title = title, Content = content, Created = dateTime };
+            // newContent = new DiaryPage { Id = id, Title = title, Content = content, Created = dateTime };
 
-            var r1 = pages.Insert(newContent);
+            // var r1 = pages.Insert(newContent);
 
 
         }

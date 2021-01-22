@@ -7,9 +7,8 @@ namespace MyDiary
     public class DiaryPage : BindableBase
     {
         //public event PropertyChangedEventHandler PropertyChanged;
-        //public string Id { get; set; } = Guid.NewGuid().ToString();
-
-        public ObjectId Id { get; set; }
+        //public ObjectId Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// Title of the diary's content 
@@ -37,9 +36,9 @@ namespace MyDiary
             }
         }
 
-        /// <summary>
-        /// Instance of the DiaryPage class
-        /// </summary>
+        // <summary>
+        // Instance of the DiaryPage class
+        // </summary>
         public DiaryPage DiaryContent { get; set; }
 
         public DateTime Created { get; set; } = DateTime.Now;

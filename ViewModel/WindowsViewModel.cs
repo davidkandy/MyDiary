@@ -1,12 +1,14 @@
 ﻿using Prism.Mvvm;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
 namespace MyDiary
 {
-    public class WindowsViewModel : BindableBase
+    public class WindowsViewModel : INotifyCollectionChanged
     {
         #region Private fields
 
@@ -24,6 +26,18 @@ namespace MyDiary
         /// A new diary content awaiting to be saved and added to the list
         /// </summary>
         public string PendingContent;
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        // I don't think we need that much documentation rn, bruh.
+        // Just set the damn property let's go :|
+        // 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<DiaryPage> Pages { get; }
+
 
         #endregion
 
@@ -73,7 +87,7 @@ namespace MyDiary
 
             SaveCommand = new RelayCommand(Save);
             ClearAllTextCommand = new RelayCommand(ClearAllText);
-            NewContentCommand = new RelayCommand(NewContent);
+            //NewContentCommand = new RelayCommand(NewContent);
 
             //Menu Commands
             
@@ -89,9 +103,12 @@ namespace MyDiary
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             //MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(mWindow, GetMousePosition()));
+
+            var pages = DatabaseManager.GetPages();
+            Pages = new List<DiaryPage>(pages);
         }
         #endregion
-
+         
         #region Command Methods
         public void Save()
         {
@@ -104,17 +121,24 @@ namespace MyDiary
 
         }
 
+        /*
+        [STAThread]
         public void NewContent()
         {
+            Application app = new Application();
+            DiaryContentWindow dcwVM = new DiaryContentWindow();
+            dcwVM.Show();
+            app.Run(dcwVM);
+
             //var page = new DiaryPage();
             //DatabaseManager.AddNewContent(page, page.Id, page.Title, page.Content, page.Created);
             //var content = new DiaryContentWindowViewModel(page, page.Id, page.Title, page.Content, page.Created);
 
             //DatabaseManager.AddPage(content);
 
-            DatabaseManager.GetPages();
-        }
 
+        }
+        */
         #endregion
 
         #region Private helper

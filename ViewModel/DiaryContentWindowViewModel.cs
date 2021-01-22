@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyDiary
 {
@@ -48,7 +49,7 @@ namespace MyDiary
         {
             Page = page;
 
-            Page.Id = id;
+            // Page.Id = id;
             Page.Title = title;
             Page.Content = content;
             Page.Created = dateTime;
@@ -58,6 +59,7 @@ namespace MyDiary
             SaveCommand = new RelayCommand(Save);
             CancelCommand = new RelayCommand(Cancel);
         }
+
         public DiaryContentWindowViewModel()
         {
             Page = new DiaryPage();

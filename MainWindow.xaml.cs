@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.Windows;
 
 namespace MyDiary
@@ -22,26 +20,28 @@ namespace MyDiary
 
             DataContext = new WindowsViewModel(this); // <= this also works.
 
-            var diaryCW = this.DiaryContentWindow;
-            var diaryItemWindow = this.ItemContentWindow;
+            DiaryListContainer.ItemsSource = DatabaseManager.GetPages();
 
-            DiaryContentWindow.DiaryContent += (s, e) =>
-            {
-                diaryItemWindow.DataContext = e;
+            //var diaryCW = this.DiaryContentWindow;
+            //var diaryItemWindow = this.ItemContentWindow;
 
-                diaryItemWindow.Visibility = Visibility.Visible;
-                diaryCW.Visibility = Visibility.Hidden;
+            //DiaryContentWindow.DiaryContent += (s, e) =>
+            //{
+            //    diaryItemWindow.DataContext = e;
 
-            };
+            //    diaryItemWindow.Visibility = Visibility.Visible;
+            //    diaryCW.Visibility = Visibility.Hidden;
 
-            ItemContentWindow.DiaryContent += (s, e) =>
-            {
-                diaryCW.DataContext = e;
+            //};
 
-                diaryCW.Visibility = Visibility.Visible;
-                diaryItemWindow.Visibility = Visibility.Hidden;
+            //ItemContentWindow.DiaryContent += (s, e) =>
+            //{
+            //    diaryCW.DataContext = e;
+
+            //    diaryCW.Visibility = Visibility.Visible;
+            //    diaryItemWindow.Visibility = Visibility.Hidden;
                 
-            };
+            //};
 
         }
 
