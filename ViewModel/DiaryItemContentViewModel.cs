@@ -1,6 +1,7 @@
 ﻿using Prism.Mvvm;
 using System;
 using System.Windows.Input;
+using MyDiary.Models.Entities;
 
 namespace MyDiary
 {

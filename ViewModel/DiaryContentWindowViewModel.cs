@@ -2,6 +2,8 @@
 using Prism.Mvvm;
 using System;
 using System.Windows.Input;
+using MyDiary.Models.Entities;
+
 using static System.Net.Mime.MediaTypeNames;
 
 namespace MyDiary

@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System;
+using MyDiary.Models.Entities;
+
 
 namespace MyDiary
 {
@@ -9,17 +11,17 @@ namespace MyDiary
     /// </summary>
     public partial class DiaryContentWindow : UserControl
     {
-        public event EventHandler<DiaryPage> DiaryContent;
-
         public DiaryContentWindow()
         {
             InitializeComponent();
 
-            Loaded += (s, e) =>
-            {
-                Console.WriteLine(this);
-                DataContext = new DiaryContentWindowViewModel();
-            };
+            DataContext = new DiaryContentWindowViewModel();
+
+            //Loaded += (s, e) =>
+            //{
+            //    Console.WriteLine(this);
+            //    DataContext = new DiaryContentWindowViewModel();
+            //};
         }
 
         public void Save(DiaryPage page)

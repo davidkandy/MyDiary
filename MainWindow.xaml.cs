@@ -16,11 +16,7 @@ namespace MyDiary
 
             var window = this;
 
-            DataContext = new WindowsViewModel(window); // <= this also works.
-
-            //DiaryListContainer.ItemsSource = DatabaseManager.GetPages();
-
+            DataContext = new WindowsViewModel(window);
         }
-
     }
 }

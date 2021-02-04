@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using MyDiary.Models.Entities;
 using System.Windows;
 using System.Windows.Input;
 
 namespace MyDiary
 {
-    public class WindowsViewModel : INotifyCollectionChanged
+    public class WindowsViewModel : BindableBase
     {
         #region Private fields
 
@@ -27,14 +28,8 @@ namespace MyDiary
         /// </summary>
         public string PendingContent;
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
-        // I don't think we need that much documentation rn, bruh.
-        // Just set the damn property let's go :|
-        // 
-
         /// <summary>
-        /// 
+        /// Pages
         /// </summary>
         public List<DiaryPage> Pages { get; }
 
@@ -140,7 +135,8 @@ namespace MyDiary
 
         public void NewContent()
         {
-
+            var window = Application.Current.MainWindow as MainWindow;
+            window.DiaryContentWindow.Visibility = Visibility.Visible;
         }
 
         #endregion

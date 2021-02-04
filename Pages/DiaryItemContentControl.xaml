@@ -5,9 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:MyDiary"
         mc:Ignorable="d"
-        x:Name="DiaryItemControl"
-        d:DataContext="{x:Static local:DiaryItemWindowDesignModel.Instance}"
-        d:DesignHeight="220" d:DesignWidth="250" Height="220" Width="265"
+        Height="220" Width="265"
         >
     <Grid>
         <Border Background="{StaticResource BrightPurpleBrush}" CornerRadius="20">
