@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MyDiary.Models.Entities;
+using MyDiary;
 
 namespace MyDiary
 {
@@ -35,21 +35,7 @@ namespace MyDiary
         {
             var collection = Database.GetCollection<DiaryPage>(nameof(DiaryPage));
 
-            // Like this.
-            // Cool right?
-            // Yup
-            
-            // Any questions?
-            // Nope, is this all?
-            // Lol..are you disappointed?
-            // We need to register users though..
-
-            // Can you handle that?
-            // Nah bro
-            // Should be pretty easy...
-            // I'll just help you create the ViewModel...
-
-            diary.UserId = CurrentUser.Id;
+            //diary.UserId = CurrentUser.Id;
 
             collection.Upsert(diary);
         }

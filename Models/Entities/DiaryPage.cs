@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using System;
 
-namespace MyDiary.Models.Entities
+namespace MyDiary
 {
     public class DiaryPage : BindableBase
     {
@@ -11,6 +11,13 @@ namespace MyDiary.Models.Entities
         public int UserId { get; set; }
 
         public string Id { get; set; } = Guid.NewGuid().ToString();
+
+
+        public DateTime Created { get; set; } = DateTime.Now;
+
+
+        public DateTime LastUpdated { get; set; }
+
 
         /// <summary>
         /// Title of the diary's content 
@@ -28,24 +35,24 @@ namespace MyDiary.Models.Entities
         /// <summary>
         /// Content of the diary 
         /// </summary>
-        private string content;
-        public string Content
-        {
-            get{ return content; }
-            set
-            {
-                SetProperty(ref content, value);
-            }
-        }
+
+        public string Content { get; set; } = string.Empty;
+
+        //private string content;
+        //public string Content
+        //{
+        //    get{ return content; }
+        //    set
+        //    {
+        //        SetProperty(ref content, value);
+        //    }
+    }
 
         // <summary>
         // Instance of the DiaryPage class
         // </summary>
         // public DiaryPage DiaryContent { get; set; } // <= Still declaring a David Kandy inside of a David Kandy...You realize that this creates an infinite set of David Kandys right?
         // All good, move AppUser to the Entities folder.
-
-        public DateTime Created { get; set; } = DateTime.Now;
-        public DateTime LastUpdated { get; set; }
 
         //void RaisePropertyChanged([CallerMemberName]string property = "")
         //{
@@ -55,5 +62,4 @@ namespace MyDiary.Models.Entities
         //        handler?.Invoke(this, new PropertyChangedEventArgs(property));
         //    }
         //}
-    }
 }

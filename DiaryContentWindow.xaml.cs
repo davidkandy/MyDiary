@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System;
-using MyDiary.Models.Entities;
+using MyDiary;
 
 
 namespace MyDiary

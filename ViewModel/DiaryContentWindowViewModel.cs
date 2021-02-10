@@ -2,9 +2,8 @@
 using Prism.Mvvm;
 using System;
 using System.Windows.Input;
-using MyDiary.Models.Entities;
-
-using static System.Net.Mime.MediaTypeNames;
+using MyDiary;
+using System.Windows;
 
 namespace MyDiary
 {
@@ -80,7 +79,11 @@ namespace MyDiary
         }
         private void Cancel()
         {
+            Page.Title = string.Empty;
+            Page.Content = string.Empty;
 
+            var window = Application.Current.MainWindow as MainWindow;
+            window.DiaryContentWindow.Visibility = Visibility.Hidden;
         }
         #endregion
     }

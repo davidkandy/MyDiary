@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ScrollViewer Visibility="Visible" Grid.Row="0">
+            <ScrollViewer Grid.Row="0">
 
                 <Grid>
 

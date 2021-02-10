@@ -2,6 +2,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MyDiary
@@ -9,27 +10,20 @@ namespace MyDiary
     public class LoginViewModel : BindableBase
     {
         public string Username { get; set; }
-
-        // I know this is not that secure, but we're saving the stress for now...
-        // Okay, the right thing to use is SecureString right? 
-        // Yup, good work with the research....
         public string Password { get; set; }
+        public ICommand LoginCommand { get; }
+        public ICommand CreateAccountCommand { get; }
 
-        public ICommand LoginCommand { get; set; }
+        readonly MainWindow window = Application.Current.MainWindow as MainWindow; 
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(LoginAsync);
+            LoginCommand = new RelayCommand(Login);
+            CreateAccountCommand = new RelayCommand(CreateAccount);
         }
         
-        private void LoginAsync()
+        private void Login()
         {
-            //var user = new AppUser
-            //{
-            //    Username = Username,
-            //    Password = Password
-            //};
-
             var user = DatabaseManager.GetUsers()
                 .FindOne(x => x.Username == Username);
 
@@ -51,7 +45,14 @@ namespace MyDiary
             DatabaseManager.CurrentUser = user;
 
             // Don't forget to switch views here...
+            window.LoginPage.Visibility = Visibility.Hidden;
+            window.DiaryContentWindow.Visibility = Visibility.Visible;
+        }
 
+        void CreateAccount()
+        {
+            window.LoginPage.Visibility = Visibility.Hidden;
+            window.RegisterPage.Visibility = Visibility.Visible;
         }
     }
 }

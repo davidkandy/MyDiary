@@ -1,4 +1,5 @@
 ﻿using System.Security;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace MyDiary
@@ -6,7 +7,7 @@ namespace MyDiary
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : UserControl
+    public partial class LoginPage : Window
     {
         public LoginPage()
         {
@@ -16,5 +17,9 @@ namespace MyDiary
 
         public SecureString SecurePassword => PasswordText.SecurePassword;
 
+        void NavigateBack(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DiaryContentWindow());
+        }
     }
 }

@@ -1,9 +1,6 @@
-﻿using Prism.Mvvm;
-using System;
+﻿using MyDiary;
+using Prism.Mvvm;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using MyDiary.Models.Entities;
 using System.Windows;
 using System.Windows.Input;
 
@@ -18,6 +15,7 @@ namespace MyDiary
         #endregion
 
         #region Public Properties
+
         /// <summary>
         /// The title to display 
         /// </summary>
@@ -33,15 +31,9 @@ namespace MyDiary
         /// </summary>
         public List<DiaryPage> Pages { get; }
 
-
         #endregion
 
         #region Public Commands
-
-        /// <summary>
-        /// Command to save the diary content
-        /// </summary>
-        public ICommand SaveCommand { get;}
 
         /// <summary>
         /// Command to clear all the text in the content control
@@ -85,7 +77,6 @@ namespace MyDiary
         {
             mWindow = window;
 
-            SaveCommand = new RelayCommand(Save);
             ClearAllTextCommand = new RelayCommand(ClearAllText);
             NewContentCommand = new RelayCommand(NewContent);
             SearchCommand = new RelayCommand(Search);
@@ -96,8 +87,6 @@ namespace MyDiary
                 () =>
                 {
                     mWindow.WindowState = WindowState.Minimized;
-
-                    // It's not hitting the breakpoint
 
                 });
 
@@ -111,8 +100,9 @@ namespace MyDiary
 
         public void Search()
         {
-            SearchResultPage srp = new SearchResultPage();
-            
+            var window = Application.Current.MainWindow as MainWindow;
+            window.SearchResultPage.Visibility ^= Visibility.Hidden;
+
         }
 
         public WindowsViewModel()
@@ -122,12 +112,6 @@ namespace MyDiary
         #endregion
          
         #region Command Methods
-        public void Save()
-        {
-            var page = new DiaryPage();
-            DatabaseManager.AddPage(page);
-        }
-
         public void ClearAllText()
         {
 
@@ -136,21 +120,8 @@ namespace MyDiary
         public void NewContent()
         {
             var window = Application.Current.MainWindow as MainWindow;
-            window.DiaryContentWindow.Visibility = Visibility.Visible;
+            window.DiaryContentWindow.Visibility ^= Visibility.Hidden;
         }
-
-        #endregion
-
-        #region Private helper
-        /// <summary>
-        /// Gets the current mouse position on the screen
-        /// </summary>
-        /// <returns></returns>
-        /*private Point GetMousePosition()
-        {
-            return mWindowResizer.GetCursorPosition();
-        }
-        */
 
         #endregion
 

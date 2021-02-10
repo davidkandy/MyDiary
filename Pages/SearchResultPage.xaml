@@ -11,35 +11,50 @@
         <!--<local:WindowsViewModel/>-->
     <!--</UserControl.DataContext>-->
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <Grid>
         <Border CornerRadius="10">
             <Grid>
-                <ListBox
-            Padding="5"
-            x:Name="DiaryListContainer"
-            SelectionMode="Extended"
-            >
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid>
+                        <ListBox
+                            Padding="5"
+                            x:Name="DiaryListContainer"
+                            SelectionMode="Extended"
+                            >
 
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical" Height="35">
-                                <TextBlock Text="{Binding Title}"
-                                   Foreground="{StaticResource BrightPurpleBrush}"
-                                   FontFamily="{StaticResource LatoBold}"
-                                   FontSize="{StaticResource FontSizeRegular}"
-                                   TextWrapping="WrapWithOverflow"/>
-                                <TextBlock 
-                            Text="{Binding Content}" 
-                            FontFamily="{StaticResource LatoRegular}"
-                            FontSize="{StaticResource FontSizeMedium}"
-                            TextWrapping="WrapWithOverflow"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                            <ListBox.ItemTemplate>
+                                
+                                <DataTemplate>
+                                    
+                                    <StackPanel Orientation="Vertical" Height="35">
+                                        
+                                        <TextBlock Text="{Binding Title}"
+                                           Foreground="{StaticResource BrightPurpleBrush}"
+                                           FontFamily="{StaticResource LatoBold}"
+                                           FontSize="{StaticResource FontSizeRegular}"
+                                           TextWrapping="WrapWithOverflow"
+                                           />
+                                        
+                                        <TextBlock 
+                                            Text="{Binding Content}" 
+                                            FontFamily="{StaticResource LatoRegular}"
+                                            FontSize="{StaticResource FontSizeMedium}"
+                                            TextWrapping="WrapWithOverflow"
+                                            />
+                                        
+                                    </StackPanel>
+                                    
+                                </DataTemplate>
+                                
+                            </ListBox.ItemTemplate>
+                            
+                        </ListBox>
+                        
+                    </Grid>
+                </ScrollViewer>
             </Grid>
         </Border>
-    </ScrollViewer>
+    </Grid>
     
     
 </UserControl>

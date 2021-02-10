@@ -259,35 +259,41 @@
                        Margin="5,35,12,0"/>
 
                 <Grid Grid.Row="1" ClipToBounds="True">
-                    <!--The Diary Content Window-->
-				    <local:DiaryContentWindow
-                        x:Name="DiaryContentWindow"
-                        />
-
-
+                    
                     <!--Register Page-->
                     <local:RegisterPage
                         x:Name="RegisterPage"
+                        Visibility="Visible"
                         />
 
                     <!--Login Page-->
                     <local:LoginPage
                         x:Name="LoginPage"
+                        Visibility="Hidden"
                         />
 
-                    <!-- Search Result Page-->
+                     <!--Search Result Page-->
                     <local:SearchResultPage
                         x:Name="SearchResultPage"
+                        Visibility="Hidden"
                         />
-                
+                    
+                    <!--The Diary Content Window-->
+				    <local:DiaryContentWindow
+                        x:Name="DiaryContentWindow"
+                        Visibility="Hidden"
+                        />
+                    
                     <!--The Diary Item Content Control Window-->
-                    <!--<local:DiaryItemContentControl 
-                            x:Name="ItemContentWindow"
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Top"
-                            Margin="5"
-                        />-->
+                    <local:DiaryItemContentControl 
+                        x:Name="ItemContentWindow"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Margin="5"
+                        Visibility="Hidden"
+                        />
                 </Grid>
+
             </Grid>
     </Grid>
 </Window>
