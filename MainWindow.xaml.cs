@@ -13,9 +13,7 @@ namespace MyDiary
         public MainWindow()
         {
             InitializeComponent();
-
             var window = this;
-
             DataContext = new WindowsViewModel(window);
         }
     }

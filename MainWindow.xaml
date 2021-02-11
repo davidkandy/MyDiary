@@ -263,13 +263,13 @@
                     <!--Register Page-->
                     <local:RegisterPage
                         x:Name="RegisterPage"
-                        Visibility="Visible"
+                        Visibility="Hidden"
                         />
 
                     <!--Login Page-->
                     <local:LoginPage
                         x:Name="LoginPage"
-                        Visibility="Hidden"
+                        Visibility="Visible"
                         />
 
                      <!--Search Result Page-->

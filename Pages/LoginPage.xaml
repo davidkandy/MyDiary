@@ -1,13 +1,10 @@
-﻿<Window x:Class="MyDiary.LoginPage"
+﻿<UserControl x:Class="MyDiary.LoginPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyDiary"
              mc:Ignorable="d" 
-             AllowsTransparency="True"
-             WindowStartupLocation="CenterScreen"
-             WindowStyle="None"
              d:DesignHeight="700" d:DesignWidth="700">
 
     <Border>
@@ -84,4 +81,4 @@
         </Grid>
     </Border>
 
-</Window>
+</UserControl>

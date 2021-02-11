@@ -1,12 +1,11 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace MyDiary
 {
     /// <summary>
     /// Interaction logic for RegisterPage.xaml
     /// </summary>
-    public partial class RegisterPage : Window
+    public partial class RegisterPage : UserControl
     {
         public RegisterPage()
         {
